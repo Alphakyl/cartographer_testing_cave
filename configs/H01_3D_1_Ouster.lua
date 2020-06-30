@@ -78,9 +78,7 @@ TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.num_threads = 4			
 --TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.miss_probability =.45													--default 0.49  gene 0.45
 --TRAJECTORY_BUILDER_3D.submaps.num_free_space_voxels = 2																					--default 2
 
-
-TRAJECTORY_BUILDER_3D.imu_gravity_time_constant = 9.8
-
+TRAJECTORY_BUILDER_3D.imu_gravity_time_constant = 9.81
 
 -----------------
 -- Map Builder --
@@ -91,7 +89,7 @@ MAP_BUILDER.num_background_threads = 6
 ----------------
 -- Pose Graph --
 ----------------
-POSE_GRAPH.optimize_every_n_nodes = 0                                                           --default 90      gene 45
+POSE_GRAPH.optimize_every_n_nodes = 320                                                           --default 90      gene 45
 
 POSE_GRAPH.constraint_builder.sampling_ratio = 0.3                                              --default 0.3     gene 0.3
 --POSE_GRAPH.constraint_builder.max_constraint_distance = 30                                    --default 15      gene 30
@@ -107,7 +105,7 @@ POSE_GRAPH.constraint_builder.log_matches = true                                
 --POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.min_rotational_score = 0.77      --default 0.77
 --POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.min_low_resolution_score = 0.55  --default 0.55       
 --POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 5.   --default 5.      gene 5.
---POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_z_search_window = 3     --default 1.      gene 3
+POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_z_search_window = 3     --default 1.      gene 3
 --POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.angular_search_window = math.rad(22.5) --default 15  gene 22.5
 
 
@@ -118,7 +116,7 @@ POSE_GRAPH.constraint_builder.log_matches = true                                
 --POSE_GRAPH.constraint_builder.ceres_scan_matcher_3d.only_optimize_yaw = false                 --default false gene false
 --POSE_GRAPH.constraint_builder.ceres_scan_matcher_3d.ceres_solver_options.num_threads = 4      --default 1 gene 6
 
-POSE_GRAPH.optimization_problem.huber_scale = 5e2                                               --default 1e1     gene 5e2
+POSE_GRAPH.optimization_problem.huber_scale = 1e1                                               --default 1e1     gene 5e2
 --POSE_GRAPH.optimization_problem.acceleration_weight = 1e3                                       --default 1e3
 --POSE_GRAPH.optimization_problem.rotation_weight = 3e5                                           --default 3e5
 --POSE_GRAPH.optimization_problem.local_slam_pose_translation_weight = 1e5                        --default 1e5
