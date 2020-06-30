@@ -78,11 +78,15 @@ TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.num_threads = 4			
 --TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.miss_probability =.45													--default 0.49  gene 0.45
 --TRAJECTORY_BUILDER_3D.submaps.num_free_space_voxels = 2																					--default 2
 
+
+TRAJECTORY_BUILDER_3D.imu_gravity_time_constant = 9.8
+
+
 -----------------
 -- Map Builder --
 -----------------
 MAP_BUILDER.use_trajectory_builder_3d = true
-MAP_BUILDER.num_background_threads = 7 
+MAP_BUILDER.num_background_threads = 6 
 
 ----------------
 -- Pose Graph --
