@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<launch>
+
+  <node name="cartographer_node" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory $(find cartographer_testing_cave)/configs
+          -configuration_basename 2_ouster_test.lua"
+      output="screen">
+    <!-- <remap from="/odom" to="/transformed_odom"/> -->
+    <remap from="/L01/points2_1" to="/L01/os1_cloud_node/points"/>
+    <remap from="/L01/points2_2" to="/L01/vert_os1_cloud_node/points"/>
+    <remap from="/L01/imu" to="/L01/imu_raw"/>
+  </node>
+
+  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+      type="cartographer_occupancy_grid_node" args="-resolution 0.2" />
+
+</launch>

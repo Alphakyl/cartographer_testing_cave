@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<launch>
+  <arg name="vehicle_name" default="H01"/>
+  <node name="cartographer_node" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory $(find cartographer_testing_cave)/configs
+          -configuration_basename $(arg vehicle_name)_3D_1_Ouster.lua"
+      output="screen">
+    <!-- <remap from="/odom" to="/transformed_odom"/> -->
+    <remap from="/points2" to="/$(arg vehicle_name)/os1_cloud_node/points"/>
+    <remap from="/imu" to="/$(arg vehicle_name)/imu_raw"/>
+  </node>
+
+  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+      type="cartographer_occupancy_grid_node" args="-resolution 0.2" />
+
+</launch>

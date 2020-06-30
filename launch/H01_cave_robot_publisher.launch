@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="rate" default="100"/>
+	<node pkg="tf2_ros" type="static_transform_publisher" name="body_aligned_imu_link_to_gx5_link" 
+		args="0 0 0 -1.57 0 3.14 imu_viz_link imu_link"/>
+
+	<node pkg="tf2_ros" type="static_transform_publisher" name="body_aligned_imu_link_to_os1_sensor" 
+		args="0 0 0.08 0 0 2.35619 imu_viz_link horiz_ouster_link"/>
+	
+	<node pkg="tf2_ros" type="static_transform_publisher" name="body_aligned_imu_link_to_os1_vert_sensor"
+		args="-0.145 0 -0.075 1.5707 0 1.5707"/>	
+</launch>
