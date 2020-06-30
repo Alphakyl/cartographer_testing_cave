@@ -18,9 +18,9 @@ include "trajectory_builder.lua"
 options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
-  map_frame = "map",
-  tracking_frame = "body_aligned_imu_link",
-  published_frame = "body_aligned_imu_link",
+  map_frame = "H01/map",
+  tracking_frame = "H01/imu_viz_link",
+  published_frame = "H01/imu_viz_link",
   odom_frame = "odom",
   provide_odom_frame = true,
   publish_frame_projected_to_2d = false,
@@ -92,8 +92,7 @@ TRAJECTORY_BUILDER_3D.real_time_correlative_scan_matcher.angular_search_window =
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 3.
 -- TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 5.
 
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 1.5e2
--- TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 30.
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 30.
 -- TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 4e2.
 
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.num_threads = 6
