@@ -46,7 +46,7 @@ options = {
 ------------------------
 -- Trajectory Builder --
 ------------------------
-MAX_3D_RANGE = 100.                                                                               --default 60. 
+MAX_3D_RANGE = 80.                                                                               --default 60. 
 TRAJECTORY_BUILDER_3D.min_range = 1.                                                              --default 1.
 TRAJECTORY_BUILDER_3D.num_accumulated_range_data = 1                                              --default 1.
 voxel_filter_size = 0.1                                                                           --default 0.15
@@ -59,7 +59,7 @@ voxel_filter_size = 0.1                                                         
 
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_0 = 1.	 													--default 1.    
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_1 = 6.														--default 6.
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 3.																--default 5.    gene 3.
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 10.																--default 5.    gene 3.
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 1.5e2																--default 4e2   gene 30
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.only_optimize_yaw = false															--default false
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.use_nonmonotonic_steps = false 		--default false
@@ -78,24 +78,26 @@ TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.num_threads = 4			
 --TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.miss_probability =.45													--default 0.49  gene 0.45
 --TRAJECTORY_BUILDER_3D.submaps.num_free_space_voxels = 2																					--default 2
 
+TRAJECTORY_BUILDER_3D.imu_gravity_time_constant = 9.8
+
 -----------------
 -- Map Builder --
 -----------------
 MAP_BUILDER.use_trajectory_builder_3d = true
-MAP_BUILDER.num_background_threads = 7 
+MAP_BUILDER.num_background_threads = 6 
 
 ----------------
 -- Pose Graph --
 ----------------
-POSE_GRAPH.optimize_every_n_nodes = 0                                                           --default 90      gene 45
+POSE_GRAPH.optimize_every_n_nodes = 45                                                           --default 90      gene 45
 
 POSE_GRAPH.constraint_builder.sampling_ratio = 0.3                                              --default 0.3     gene 0.3
---POSE_GRAPH.constraint_builder.max_constraint_distance = 30                                    --default 15      gene 30
+POSE_GRAPH.constraint_builder.max_constraint_distance = 30                                    --default 15      gene 30
 POSE_GRAPH.constraint_builder.min_score = 0.55                                                  --default 0.55    gene 0.55         
 POSE_GRAPH.constraint_builder.global_localization_min_score = 0.6                               --default 0.6     gene 0.66
 POSE_GRAPH.constraint_builder.loop_closure_translation_weight = 1.1e4                           --default 1.1e4
 POSE_GRAPH.constraint_builder.loop_closure_rotation_weight = 1e5                                --default 1e5
-POSE_GRAPH.constraint_builder.log_matches = true                                                --default true
+POSE_GRAPH.constraint_builder.log_matches = false                                                --default true
 
 
 --POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.branch_and_bound_depth = 8     --default 8
@@ -103,16 +105,16 @@ POSE_GRAPH.constraint_builder.log_matches = true                                
 --POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.min_rotational_score = 0.77      --default 0.77
 --POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.min_low_resolution_score = 0.55  --default 0.55       
 --POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 5.   --default 5.      gene 5.
---POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_z_search_window = 3     --default 1.      gene 3
+POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_z_search_window = 5     --default 1.      gene 3
 --POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.angular_search_window = math.rad(22.5) --default 15  gene 22.5
 
 
 --POSE_GRAPH.constraint_builder.ceres_scan_matcher_3d.occupied_space_weight_0 = 5.              --default 5.
 --POSE_GRAPH.constraint_builder.ceres_scan_matcher_3d.occupied_space_weight_1 = 30.             --default 30.
 --POSE_GRAPH.constraint_builder.ceres_scan_matcher_3d.translation_weight = 10                   --default 5     gene 10
---POSE_GRAPH.constraint_builder.ceres_scan_matcher_3d.rotation_weight = 100.                    --default 1
+--POSE_GRAPH.constraint_builder.ceres_scan_matcher_3d.rotation_weight = 100.                    --default 1     gene 100
 --POSE_GRAPH.constraint_builder.ceres_scan_matcher_3d.only_optimize_yaw = false                 --default false gene false
---POSE_GRAPH.constraint_builder.ceres_scan_matcher_3d.ceres_solver_options.num_threads = 4      --default 1 gene 6
+POSE_GRAPH.constraint_builder.ceres_scan_matcher_3d.ceres_solver_options.num_threads = 3      --default 1 gene 6
 
 POSE_GRAPH.optimization_problem.huber_scale = 5e2                                               --default 1e1     gene 5e2
 --POSE_GRAPH.optimization_problem.acceleration_weight = 1e3                                       --default 1e3
@@ -128,6 +130,6 @@ POSE_GRAPH.optimization_problem.use_online_imu_extrinsics_in_3d = false         
 POSE_GRAPH.optimization_problem.fix_z_in_3d = false                                             --default false   gene false
 POSE_GRAPH.optimization_problem.ceres_solver_options.use_nonmonotonic_steps = false             --default false
 POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 50                    --default 50      gene 5
-POSE_GRAPH.optimization_problem.ceres_solver_options.num_threads = 7                            --default 7       gene 6
+POSE_GRAPH.optimization_problem.ceres_solver_options.num_threads = 6                            --default 7       gene 6
 
 return options
