@@ -7,8 +7,7 @@
           -configuration_directory $(find cartographer_testing_cave)/configs
           -configuration_basename $(arg vehicle_name)_3D_1_Ouster.lua"
       output="screen">
-    <!-- <remap from="/odom" to="/transformed_odom"/> -->
-    <remap from="/points2" to="/$(arg vehicle_name)/os1_cloud_node/points"/>
+    <remap from="/points2" to="/$(arg vehicle_name)/horiz/os1_cloud_node/points"/>
     <remap from="/imu" to="/$(arg vehicle_name)/imu_raw"/>
   </node>
 
