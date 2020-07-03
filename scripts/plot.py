@@ -7,7 +7,7 @@ from geometry_msgs.msg import Point, Pose, Quaternion, Twist, Vector3, Transform
 from std_msgs.msgs import *
 import tf2_ros
 import numpy
-
+import time
 
 class ros_tf_list:
     def __init__(self):
@@ -17,14 +17,16 @@ class ros_tf_list:
         listener = tf2_ros.TransformListener(tfBuffer)
         x = np.zeros((1,7))
         count = 0
+        rate = rospy.Rate(10)
         while not rospy.is_shutdown():
             try:
                 trans = tfBuffer.lookup_transform(parent_name, child_name, rospy.Time())
                 np.append(x, [[trans.transform.translation.x],[trans.transform.translation.y],[trans.transform.translation.z], [trans.transform.rotation.x], [trans.transform.rotation.y], [trans.transform.rotation.z], [trans.transform.rotation.w]], axis=1)
                 count = count + 1
-                if count == 20000
+                rate.sleep()
+                if count == 20:
                     print "Save to csv"
-                    np.savetxt("/home/kyle/catkin_ws/src/cartographer_testing_cave/data/transform.csv", x, delimiter=",")           
+                    np.savetxt("/home/kyle/catkin_ws/src/cartographer_testing_cave/data/transform"+time.gtime(0)+".csv", x, delimiter=",")           
             except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
                 rate.sleep()
                 continue       
