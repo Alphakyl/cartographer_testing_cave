@@ -4,9 +4,9 @@ import rospy
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import Imu
 from geometry_msgs.msg import Point, Pose, Quaternion, Twist, Vector3, TransformStamped
-from std_msgs.msgs import *
+from std_msgs.msg import *
 import tf2_ros
-import numpy
+import numpy as np
 import time
 
 class ros_tf_list:
@@ -15,18 +15,19 @@ class ros_tf_list:
         child_name = 'H01/imu_viz_link'
         tfBuffer = tf2_ros.Buffer()
         listener = tf2_ros.TransformListener(tfBuffer)
-        x = np.zeros((1,7))
+        x = np.zeros((7,1))
         count = 0
         rate = rospy.Rate(10)
         while not rospy.is_shutdown():
             try:
                 trans = tfBuffer.lookup_transform(parent_name, child_name, rospy.Time())
-                np.append(x, [[trans.transform.translation.x],[trans.transform.translation.y],[trans.transform.translation.z], [trans.transform.rotation.x], [trans.transform.rotation.y], [trans.transform.rotation.z], [trans.transform.rotation.w]], axis=1)
+                x = np.append(x, [[trans.transform.translation.x],[trans.transform.translation.y],[trans.transform.translation.z], [trans.transform.rotation.x], [trans.transform.rotation.y], [trans.transform.rotation.z], [trans.transform.rotation.w]], axis=1)
                 count = count + 1
                 rate.sleep()
-                if count == 20:
+                print count
+                if count == 8400:
                     print "Save to csv"
-                    np.savetxt("/home/kyle/catkin_ws/src/cartographer_testing_cave/data/transform"+time.gtime(0)+".csv", x, delimiter=",")           
+                    np.savetxt("/home/kyle/catkin_ws/src/cartographer_testing_cave/data/transform"+str(int(time.time()))+".csv", x, delimiter=",")           
             except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
                 rate.sleep()
                 continue       
