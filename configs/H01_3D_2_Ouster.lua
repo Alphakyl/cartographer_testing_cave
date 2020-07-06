@@ -48,7 +48,7 @@ options = {
 ------------------------
 MAX_3D_RANGE = 100.                                                                               --default 60. 
 TRAJECTORY_BUILDER_3D.min_range = 1.                                                              --default 1.
-TRAJECTORY_BUILDER_3D.num_accumulated_range_data = 1                                              --default 1.
+TRAJECTORY_BUILDER_3D.num_accumulated_range_data = 2                                              --default 1.
 voxel_filter_size = 0.1                                                                           --default 0.15
 
 --TRAJECTORY_BUILDER_3D.use_online_correlative_scan_matching = false                              --default false gene false
@@ -59,8 +59,8 @@ voxel_filter_size = 0.1                                                         
 
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_0 = 1.	 													--default 1.    
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_1 = 6.														--default 6.
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 3.																--default 5.    gene 3.
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 1.5e2																--default 4e2   gene 30
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 50																--default 5.    gene 3.
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 50																--default 4e2   gene 30 kyle 1.5e2
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.only_optimize_yaw = false															--default false
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.use_nonmonotonic_steps = false 		--default false
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations	= 12,					--default 12
@@ -78,7 +78,8 @@ TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.num_threads = 4			
 --TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.miss_probability =.45													--default 0.49  gene 0.45
 --TRAJECTORY_BUILDER_3D.submaps.num_free_space_voxels = 2																					--default 2
 
-TRAJECTORY_BUILDER_3D.imu_gravity_time_constant = 9.81
+TRAJECTORY_BUILDER_3D.imu_gravity_time_constant = 9.8
+
 
 -----------------
 -- Map Builder --
@@ -89,7 +90,7 @@ MAP_BUILDER.num_background_threads = 6
 ----------------
 -- Pose Graph --
 ----------------
-POSE_GRAPH.optimize_every_n_nodes = 320                                                           --default 90      gene 45
+POSE_GRAPH.optimize_every_n_nodes = 0                                                           --default 90      gene 45
 
 POSE_GRAPH.constraint_builder.sampling_ratio = 0.3                                              --default 0.3     gene 0.03
 --POSE_GRAPH.constraint_builder.max_constraint_distance = 30                                    --default 15      gene 30
