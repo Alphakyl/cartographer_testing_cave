@@ -59,7 +59,7 @@ voxel_filter_size = 0.1                                                         
 
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_0 = 1.	 													--default 1.    
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_1 = 6.														--default 6.
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 50																--default 5.    gene 3.
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 15																--default 5.    gene 3.
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 50																--default 4e2   gene 30 kyle 1.5e2
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.only_optimize_yaw = false															--default false
 --TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.use_nonmonotonic_steps = false 		--default false
@@ -90,7 +90,7 @@ MAP_BUILDER.num_background_threads = 6
 ----------------
 -- Pose Graph --
 ----------------
-POSE_GRAPH.optimize_every_n_nodes = 0                                                           --default 90      gene 45
+POSE_GRAPH.optimize_every_n_nodes = 45                                                           --default 90      gene 45
 
 POSE_GRAPH.constraint_builder.sampling_ratio = 0.3                                              --default 0.3     gene 0.03
 --POSE_GRAPH.constraint_builder.max_constraint_distance = 30                                    --default 15      gene 30
