@@ -1,0 +1,2 @@
+Steve moving generates a bad loop closure early on in test1
+

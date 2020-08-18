@@ -5,7 +5,7 @@
   <node name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory $(find cartographer_testing_cave)/configs
-          -configuration_basename $(arg vehicle_name)_3D_2_Ouster.lua"
+          -configuration_basename $(arg vehicle_name)_3D_2_Ouster_low_latency.lua"
       output="screen">
     <remap from="/points2_1" to="/H01/horiz/os1_cloud_node/points"/>
     <remap from="/points2_2" to="/H01/vert/os1_cloud_node/points"/>

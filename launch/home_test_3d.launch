@@ -3,14 +3,14 @@
 <launch>
 	<arg name="vehicle_name"		default="H01"/>
 	<arg name="enable_bag"    		default="1"/>
-	<arg name="enable_bag_tf" 		default="0"/>
+	<!-- <arg name="enable_bag_tf" 		default="0"/> -->
   	<arg name="enable_multi"  		default="1"/>
   	<arg name="enable_single" 		default="0"/>
   	<arg name="enable_rviz"   		default="1"/>
   	<arg name="enable_sim"    		default="1"/>
   	<arg name="robot_state" 		default="1"/>
   	<arg name="enable_mapping" 		default="0"/>
-	<arg name="enable_localization" default="0"/>
+	<arg name="enable_localization" default="1"/>
 	<arg name="enable_logging" default="1"/>
 
 	<!-- Save transform to a csv file -->
@@ -43,9 +43,10 @@
 
 
 	<!-- Bags -->
-	<node pkg="rosbag" type="play" name="player" args="--clock /media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/ECMockTesting/07-01-20/sensors_1.bag" if="$(arg enable_bag)"/>
+	<node pkg="rosbag" type="play" name="player" args="--clock /media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/EDGARTesting/test1/sensors0.bag /media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/EDGARTesting/test1/sensors1.bag /media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/EDGARTesting/test1/sensors2.bag" if="$(arg enable_bag)"/>
+	<!-- <node pkg="rosbag" type="play" name="player" args="/media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/ECMockTesting/07-01-20/sensors_1.bag" if="$(arg enable_bag)"/> -->
 	<!--<node pkg="rosbag" type="play" name="player" args="/media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/ECMockTesting/06-27-20/test3/sensors_1.bag" if="$(arg enable_bag)"/>-->
 	<!--<node pkg="rosbag" type="play" name="player" args="/media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/lt2_data/bag/sensors.bag" if="$(arg enable_bag)"/>-->
-  	<node pkg="rosbag" type="play" name="player" args="/media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/lt2_data/bag/sensors_and_tf_new.bag" if="$(arg enable_bag_tf)"/>
+  	<!--<node pkg="rosbag" type="play" name="player" args="/media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/lt2_data/bag/sensors_and_tf_new.bag" if="$(arg enable_bag_tf)"/>-->
 
 </launch>
