@@ -43,7 +43,8 @@
 
 
 	<!-- Bags -->
-	<node pkg="rosbag" type="play" name="player" args="--clock /media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/EDGARTesting/test1/sensors0.bag /media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/EDGARTesting/test1/sensors1.bag /media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/EDGARTesting/test1/sensors2.bag" if="$(arg enable_bag)"/>
+	<!-- <node pkg="rosbag" type="play" name="player" args="/media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/EDGARTesting/test1/sensors0.bag /media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/EDGARTesting/test1/sensors1.bag /media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/EDGARTesting/test1/sensors2.bag" if="$(arg enable_bag)"/> -->
+	<node pkg="rosbag" type="play" name="player" args="--clock /media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/EDGARTesting/test2/sensors_2020-08-04-13-42-17_0.bag /media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/EDGARTesting/test2/sensors_2020-08-04-14-02-17_1.bag" if="$(arg enable_bag)"/>
 	<!-- <node pkg="rosbag" type="play" name="player" args="/media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/ECMockTesting/07-01-20/sensors_1.bag" if="$(arg enable_bag)"/> -->
 	<!--<node pkg="rosbag" type="play" name="player" args="/media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/ECMockTesting/06-27-20/test3/sensors_1.bag" if="$(arg enable_bag)"/>-->
 	<!--<node pkg="rosbag" type="play" name="player" args="/media/kyle/3b02da44-b4e2-41a2-b1a2-a7236a12f9cc/lt2_data/bag/sensors.bag" if="$(arg enable_bag)"/>-->
