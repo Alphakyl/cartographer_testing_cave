@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<launch>
+  <arg name="vehicle_name" default="H01"/>
+  <node name="cartographer_node" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory $(find cartographer_testing_cave)/configs
+          -configuration_basename X1_3D.lua"
+      output="screen">
+    <remap from="points2_1" to="points"/>
+    <remap from="points2_2" to="front_rgbd/points"/>
+    <!-- <remap from="points2_3" to="right_rgbd/points"/>
+    <remap from="points2_4" to="left_rgbd/points"/>
+    <remap from="points2_5" to="rear_rgbd/points"/> -->
+    <remap from="imu" to="imu/data"/>
+    <remap from="odom" to="odom"/>
+  </node>
+
+  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+      type="cartographer_occupancy_grid_node" args="-resolution 0.2" />
+
+</launch>

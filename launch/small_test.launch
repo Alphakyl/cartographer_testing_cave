@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+	<node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find ouster_backpack_bringup)/configuration_files/T02_outputs.rviz"/>
+    <!-- <node pkg="rosbag" type="play" name="player" args="-r 5 /media/kyle/45bfdd4b-6c7c-4d6a-a09d-21fbe576aa92/2020_09_01/use_pose_extrapolator/outputs_2020-09-02-14-29-08_0.bag"/> -->
+    <node pkg="rosbag" type="play" name="player" args="-r 5 /media/kyle/45bfdd4b-6c7c-4d6a-a09d-21fbe576aa92/2020_09_01/use_pose_extrapolator_false/outputs_2020-09-02-14-38-02_0.bag"/>
+</launch>
